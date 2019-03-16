@@ -8,14 +8,23 @@
 // 积是多少？例如当绳子的长度是8时，我们把它剪成长度分别为2、3、3的三段，此
 // 时得到最大的乘积18。
 
-//动态规划法
+//动态规划法 时间复杂度O(n^2),空间复杂度O(n)
 public class Solution {
     public int integerBreak(int n) {
+		if(n < 2)
+			return 0;
+		if(n == 2)
+			return 1;
+		if(n == 3)
+			return 2;
+
         int[] dp = new int[n + 1];
         dp[1] = 1;
-        for (int i = 2; i <= n; i++)
-            for (int j = 1; j < i; j++)
-                dp[i] = Math.max(dp[i], Math.max(j * (i - j), dp[j] * (i - j)));
+		dp[2] = 2;
+		dp[3] = 3;
+        for (int i = 4; i <= n; i++)
+            for (int j = 1; j <= i/2; j++)
+                dp[i] = Math.max(dp[i], dp[j] * dp[i - j]);
 
         return dp[n];
     }
