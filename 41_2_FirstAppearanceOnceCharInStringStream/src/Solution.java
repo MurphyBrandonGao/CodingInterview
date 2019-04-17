@@ -10,7 +10,7 @@ import java.util.Queue;
 // 当从该字符流中读出前六个字符“google" 时，第一个只出现一次的字符是 "l"。
 
 public class Solution {
-    
+
     private int[] cnts = new int[256];
     private Queue<Character> queue = new LinkedList<>();
 
