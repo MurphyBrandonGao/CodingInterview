@@ -10,19 +10,19 @@ import java.util.Stack;
 // 和deleteHead，分别完成在队列尾部插入结点和在队列头部删除结点的功能。
 
 public class Solution {
-    Stack<Integer> stack1 = new Stack<Integer>();
-    Stack<Integer> stack2 = new Stack<Integer>();
+    Stack<Integer> in = new Stack<Integer>();
+    Stack<Integer> out = new Stack<Integer>();
 
     public void push(int node) {
-        stack1.push(node);
+        in.push(node);
     }
 
     public int pop() {
-        if (stack2.isEmpty())
+        if (out.isEmpty())
             while (!stack1.isEmpty())
                 stack2.push(stack1.pop());
 
-        if (stack2.isEmpty())
+        if (out.isEmpty())
             try {
                 throw new Exception("queue is empty");
             } catch (Exception e) {
